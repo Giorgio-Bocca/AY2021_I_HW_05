@@ -79,8 +79,6 @@
     */
     #define LIS3DH_OUT_Z_H 0x2D
     
-    #define PUSH_BUTTON_PRESSED 0
-    
     #define EEPROM_REGISTER 0x00
     
     #define UN0 0x01

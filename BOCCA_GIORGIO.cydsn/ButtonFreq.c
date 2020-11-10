@@ -50,9 +50,9 @@ void Button_Freq(uint8_t EEPROM_f)
             EEPROM_UpdateTemperature();
             EEPROM_WriteByte(DIECI, EEPROM_REGISTER);
             eeprom_value = EEPROM_ReadByte(EEPROM_REGISTER);
-            sprintf(stringa, "Valore nella EEPROM: 0x%02X\r\n", eeprom_value);
+            sprintf(stringa, "Valore nella EEPROM: %d Hz\r\n", eeprom_value);
             UART_Debug_PutString(stringa);
-            
+                     
             break;
         
         case 10:
@@ -69,11 +69,10 @@ void Button_Freq(uint8_t EEPROM_f)
                 UART_Debug_PutString("Error occurred during I2C comm to set control register 1\r\n");   
             }
             
-             
             EEPROM_UpdateTemperature();
             EEPROM_WriteByte(VENTICINQUE, EEPROM_REGISTER);
             eeprom_value = EEPROM_ReadByte(EEPROM_REGISTER);
-            sprintf(stringa, "Valore nella EEPROM: 0x%02X\r\n", eeprom_value);
+            sprintf(stringa, "Valore nella EEPROM: %d Hz\r\n", eeprom_value);
             UART_Debug_PutString(stringa);
             
             break;
@@ -95,7 +94,7 @@ void Button_Freq(uint8_t EEPROM_f)
             EEPROM_UpdateTemperature();
             EEPROM_WriteByte(CINQUANTA, EEPROM_REGISTER);
             eeprom_value = EEPROM_ReadByte(EEPROM_REGISTER);
-            sprintf(stringa, "Valore nella EEPROM: 0x%02X\r\n", eeprom_value);
+            sprintf(stringa, "Valore nella EEPROM: %d Hz\r\n", eeprom_value);
             UART_Debug_PutString(stringa);
             
             break;
@@ -117,7 +116,7 @@ void Button_Freq(uint8_t EEPROM_f)
             EEPROM_UpdateTemperature();
             EEPROM_WriteByte(CENTO, EEPROM_REGISTER);
             eeprom_value = EEPROM_ReadByte(EEPROM_REGISTER);
-            sprintf(stringa, "Valore nella EEPROM: 0x%02X\r\n", eeprom_value);
+            sprintf(stringa, "Valore nella EEPROM: %d Hz\r\n", eeprom_value);
             UART_Debug_PutString(stringa);
             
             break;
@@ -139,7 +138,7 @@ void Button_Freq(uint8_t EEPROM_f)
             EEPROM_UpdateTemperature();
             EEPROM_WriteByte(DUECENTO, EEPROM_REGISTER);
             eeprom_value = EEPROM_ReadByte(EEPROM_REGISTER);
-            sprintf(stringa, "Valore nella EEPROM: 0x%02X\r\n", eeprom_value);
+            sprintf(stringa, "Valore nella EEPROM: %d Hz\r\n", eeprom_value);
             UART_Debug_PutString(stringa);
             
             break;
@@ -161,7 +160,7 @@ void Button_Freq(uint8_t EEPROM_f)
             EEPROM_UpdateTemperature();
             EEPROM_WriteByte(UN0, EEPROM_REGISTER);
             eeprom_value = EEPROM_ReadByte(EEPROM_REGISTER);
-            sprintf(stringa, "Valore nella EEPROM: 0x%02X\r\n", eeprom_value);
+            sprintf(stringa, "Valore nella EEPROM: %d Hz\r\n", eeprom_value);
             UART_Debug_PutString(stringa);
             
             break;
