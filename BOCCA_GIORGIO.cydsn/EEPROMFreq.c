@@ -15,10 +15,13 @@
 #include "ErrorCodes.h"
 #include "I2C_Interface.h"
 #include "stdio.h"
+#include "InterruptRoutines.h"
 
 uint8_t ctrl_reg1;
 uint8_t ctrl_reg4;
 ErrorCode error;
+
+extern uint16_t p;
 
 char message[50];
 
@@ -34,6 +37,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
+                p = 1000;
+                Timer_WritePeriod(p);
             }
             else
             {
@@ -49,6 +54,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
+                p = 100;
+                Timer_WritePeriod(p);
             }
             else
             {
@@ -64,6 +71,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
+                p = 40;
+                Timer_WritePeriod(p);
             }
             else
             {
@@ -79,6 +88,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
+                p = 20;
+                Timer_WritePeriod(p);
             }
             else
             {
@@ -94,6 +105,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
+                p = 10;
+                Timer_WritePeriod(p);
             }
             else
             {
@@ -109,6 +122,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
+                p = 5;
+                Timer_WritePeriod(p);
             }
             else
             {
