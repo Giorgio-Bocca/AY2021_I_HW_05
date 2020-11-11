@@ -32,6 +32,10 @@ uint8_t Y_axis_Data[2];
 int16_t Out_Z_axis;
 uint8_t Z_axis_Data[2];
 
+float Out_X_acc;
+float Out_Y_acc;
+float Out_Z_acc;
+
 CY_ISR(Custom_TIMER_ISR)
 { 
     Timer_ReadStatusRegister();
@@ -78,6 +82,8 @@ CY_ISR(Custom_TIMER_ISR)
                 Out_X_axis = (int16)((X_axis_Data[0] | (X_axis_Data[1]<<8)))>>4;
                 sprintf(message, "X axis value : %d\r\n", Out_X_axis);
                 UART_Debug_PutString(message);
+                
+                Out_X_acc = ((int)(Out_X_axis/1024))*GRAVITY_ACC;
             }
             else
             {
@@ -92,6 +98,8 @@ CY_ISR(Custom_TIMER_ISR)
                 Out_Y_axis = (int16)((Y_axis_Data[0] | (Y_axis_Data[1]<<8)))>>4;
                 sprintf(message, "Y axis value : %d\r\n", Out_Y_axis);
                 UART_Debug_PutString(message);
+                
+                Out_Y_acc = ((int) (Out_Y_axis/1024))*GRAVITY_ACC;
             }
             else
             {
@@ -107,6 +115,7 @@ CY_ISR(Custom_TIMER_ISR)
                 sprintf(message, "Z axis value : %d\r\n", Out_Z_axis);
                 UART_Debug_PutString(message);
                 
+                Out_Z_acc = ((int) (Out_Z_axis/1024))*GRAVITY_ACC;                
             }
             else
             {

@@ -88,6 +88,8 @@
     #define CENTO 0x64
     #define DUECENTO 0xC8
     
+    #define GRAVITY_ACC 9.81
+    
 #endif
 
 /* [] END OF FILE */
