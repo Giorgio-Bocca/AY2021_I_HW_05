@@ -90,18 +90,18 @@ CY_ISR(Custom_TIMER_ISR)
                 //L'intervallo di dati selezionato è quello [-2g +2g] tramite i bits FS = 00 settati
                 //nel control register 4, con una sensibilità pari a 1 mg/digit.
                 
-                //Out_X_acc = (Out_X_axis*gravity_acc);
-                //Out_X_axis = (int16) (Out_X_acc*trick);
+                Out_X_acc = (Out_X_axis*gravity_acc);
+                Out_X_axis = (int16) (Out_X_acc*trick);
                 DataBuffer[1] = (int8_t) (Out_X_axis & 0xFF);
                 DataBuffer[2] = (int8_t) (Out_X_axis >> 8);
                 
-                //Out_Y_acc = (Out_Y_axis*gravity_acc);
-                //Out_Y_axis = (int16) (Out_Y_acc*trick);
+                Out_Y_acc = (Out_Y_axis*gravity_acc);
+                Out_Y_axis = (int16) (Out_Y_acc*trick);
                 DataBuffer[3] = (int8_t) (Out_Y_axis & 0xFF);
                 DataBuffer[4] = (int8_t) (Out_Y_axis >> 8);
                 
-                //Out_Z_acc = (Out_Z_axis*gravity_acc);   
-                //Out_Z_axis = (int16) (Out_Z_acc*trick);
+                Out_Z_acc = (Out_Z_axis*gravity_acc);   
+                Out_Z_axis = (int16) (Out_Z_acc*trick);
                 DataBuffer[5] = (int8_t) (Out_Z_axis & 0xFF);
                 DataBuffer[6] = (int8_t) (Out_Z_axis >> 8);
                
