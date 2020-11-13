@@ -20,8 +20,8 @@
     CY_ISR_PROTO(Custom_TIMER_ISR);
 
     uint8_t DataBuffer[TRANSMIT_BUFFER_SIZE];
+    
     volatile uint8 PacketReadyFlag;
-
 #endif
 
 /* [] END OF FILE */

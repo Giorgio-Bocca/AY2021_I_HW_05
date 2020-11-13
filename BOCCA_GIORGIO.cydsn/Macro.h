@@ -1,5 +1,5 @@
 /* ========================================
- * File contenente tutte le Macro utilizzate nel programma
+ * File contenente tutte le Macro utilizzate 
  * ========================================
 */
 #ifndef __MACRO_H
@@ -21,8 +21,7 @@
     #define LIS3DH_CTRL_REG1 0x20
 
     /**
-    *   \brief Hex value to set High Resolution Mode to the accelerator 
-    *    on Control register 1 based on the Data Output Rate selected   
+    *   \brief Hex value to set the control register 1 based on the Output Data Rate selected 
     */
     #define LIS3DH_HR_MODE_CTRL_REG1_FREQ_1HZ 0x17
     #define LIS3DH_HR_MODE_CTRL_REG1_FREQ_10HZ 0x27
@@ -37,7 +36,7 @@
     #define LIS3DH_CTRL_REG4 0x23
 
     /**
-    *   \brief Hex value to set High Resolution Mode to the accelerator 
+    *   \brief Hex value to set High Resolution Mode to the accelerator and the BDU bit 
     *    on Control register 4  
     */
     #define LIS3DH_HR_MODE_CTRL_REG4 0x88
@@ -71,7 +70,6 @@
     *   \brief Address of the Z axis output MSB register
     */
     #define LIS3DH_OUT_Z_H 0x2D
-    
     
     /**
     *   \brief Address of the "startup" register of the EEPROM

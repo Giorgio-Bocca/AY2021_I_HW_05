@@ -10,7 +10,7 @@
  * convertirli in m/sec^2 e trasmetterli tramite comunicazione UART 
  * al BCC per la visualizzazione.
  * Per i dati è richiesta una High Resolution Mode.
- * Inoltre, deve essere possibile ciclare le frequenze dell'Output Data Rate
+ * Deve essere inoltre possibile ciclare le frequenze dell'Output Data Rate
  * tramite la pressione del tasto presente sul microcontrollore. 
  * 
  **\author Giorgio Bocca
@@ -52,7 +52,7 @@ int main(void)
     
     DataBuffer[0] = 0xA0; //Header byte
     DataBuffer[TRANSMIT_BUFFER_SIZE-1] = 0xC0; //Tail byte
-    
+       
     // Check which devices are present on the I2C bus
     for (int i = 0 ; i < 128; i++)
     {
