@@ -1,12 +1,10 @@
 /* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
+ * File contenente la funzione utilizzata per configurare l'ODR
+ * dell'accelerometro nel control register 1 in base al
+ * valore precedentemente letto nello "startup" register della EEPROM. 
+ * Viene inoltre configurata la High Resolution Mode
+ * mediante scrittura a 1 del bit HR nel control register 4 e 
+ * a 0 del bit LPen nel control register 1. 
  * ========================================
 */
 #include "EEPROMFreq.h"
@@ -15,18 +13,18 @@
 #include "ErrorCodes.h"
 #include "I2C_Interface.h"
 #include "stdio.h"
-#include "InterruptRoutines.h"
 
 uint8_t ctrl_reg1;
 uint8_t ctrl_reg4;
 ErrorCode error;
 
-extern uint16_t p;
-
+extern uint16_t p; //variabile contenente il periodo del timer, da settare ogni volta 
+                   //a seconda della ODR selezionata 
 char message[50];
 
 void EEPROM_Startup_Freq(uint8_t EEPROM_f)
 {
+    //CONFIGURAZIONE DEL CONTROL REGISTER 1
     switch(EEPROM_f)
     {
         case 1:
@@ -37,8 +35,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
-                p = 1000;
-                Timer_WritePeriod(p);
+                p = 1000; //1 Hz --> 1000 msec = 1 sec 
+                Timer_WritePeriod(p); //setto il periodo pari a 1 sec
             }
             else
             {
@@ -54,8 +52,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
-                p = 100;
-                Timer_WritePeriod(p);
+                p = 100; //10 Hz --> 100 msec = 0.1 sec
+                Timer_WritePeriod(p); //setto il periodo pari a 0.1 sec
             }
             else
             {
@@ -71,8 +69,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
-                p = 40;
-                Timer_WritePeriod(p);
+                p = 40; //25 Hz --> 40 msec = 0.04 sec
+                Timer_WritePeriod(p); //setto il periodo pari a 0.04 sec
             }
             else
             {
@@ -88,8 +86,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
-                p = 20;
-                Timer_WritePeriod(p);
+                p = 20; //50 Hz --> 20 msec = 0.02 sec
+                Timer_WritePeriod(p); //setto il periodo pari a 0.02 sec
             }
             else
             {
@@ -105,8 +103,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
-                p = 10;
-                Timer_WritePeriod(p);
+                p = 10; //100 Hz --> 10 msec = 0.01 sec
+                Timer_WritePeriod(p); //setto il periodo pari a 0.01 sec
             }
             else
             {
@@ -122,8 +120,8 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             {
                 sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
                 UART_Debug_PutString(message); 
-                p = 5;
-                Timer_WritePeriod(p);
+                p = 5; //200 Hz --> 5 msec = 0.005 sec
+                Timer_WritePeriod(p); //setto il periodo pari a 0.005 sec
             }
             else
             {
@@ -136,6 +134,7 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
             break;
     }
     
+    //CONFIGURAZIONE DEL CONTROL REGISTER 4 
     ctrl_reg4 = LIS3DH_HR_MODE_CTRL_REG4;
     error = I2C_Peripheral_WriteRegister(LIS3DH_DEVICE_ADDRESS, LIS3DH_CTRL_REG4, ctrl_reg4);
     
@@ -148,7 +147,5 @@ void EEPROM_Startup_Freq(uint8_t EEPROM_f)
     {
         UART_Debug_PutString("Error occurred during I2C comm to write CTRL REG 4\r\n");   
     }
-    
 }
-
 /* [] END OF FILE */

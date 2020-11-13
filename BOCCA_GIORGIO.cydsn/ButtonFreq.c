@@ -1,12 +1,11 @@
 /* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
+ * File contenetente la funzione utilizzata per settare la nuova
+ * ODR alla pressione del tasto. Vengono ciclate le frequenze in ordine crescente 
+ * e una volta giunti all'ultima si riparte dalla prima. I valori
+ * considerati sono: 1Hz, 10Hz, 25Hz, 50Hz, 100Hz, 200Hz and repeat. 
+ * La selezione avviene scrivendo la configurazione corrispondente nel registro di controllo 1. 
+ * Ogni volta viene inoltre aggiornato il valore della frequenza nel registo della EEPROM. 
+ * Le modalità sono le stesse utilizzate nel file EEPROMFreq.c
  * ========================================
 */
 #include "ButtonFreq.h"
@@ -15,14 +14,13 @@
 #include "ErrorCodes.h"
 #include "I2C_Interface.h"
 #include "stdio.h"
-#include "InterruptRoutines.h"
 
 uint8_t ctrl_reg1;
-uint8_t ctrl_reg4;
 ErrorCode error;
 uint8_t eeprom_value;
 
-uint16_t p;
+uint16_t p; //variabile contenente il periodo del timer, da settare ogni volta 
+            //a seconda della ODR selezionata 
 
 char message[50];
 char stringa[30];
@@ -34,6 +32,7 @@ CY_ISR(Debouncer_ISR)
 
 void Button_Freq(uint8_t EEPROM_f)
 {
+    //CONFIGURAZIONE DEL CONTROL REGISTER 1 E SCRITTURA DELLA FREQUENZA NEL REGISTRO DELLA EEPROM
     switch(EEPROM_f)
     {
         case 1:

@@ -1,12 +1,5 @@
 /* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
+ * File contenente tutte le Macro utilizzate nel programma
  * ========================================
 */
 #ifndef __MACRO_H
@@ -29,7 +22,7 @@
 
     /**
     *   \brief Hex value to set High Resolution Mode to the accelerator 
-    *    on Control register 1 based on the Data Rate selected   
+    *    on Control register 1 based on the Data Output Rate selected   
     */
     #define LIS3DH_HR_MODE_CTRL_REG1_FREQ_1HZ 0x17
     #define LIS3DH_HR_MODE_CTRL_REG1_FREQ_10HZ 0x27
@@ -79,8 +72,16 @@
     */
     #define LIS3DH_OUT_Z_H 0x2D
     
+    
+    /**
+    *   \brief Address of the "startup" register of the EEPROM
+    */
     #define EEPROM_REGISTER 0x00
     
+    /**
+    *   \brief Hex value to write in the "startup" register 
+    *    of the EEPROM based on the Data Output Rate selected   
+    */
     #define UN0 0x01
     #define DIECI 0x0A
     #define VENTICINQUE 0x19
@@ -88,8 +89,5 @@
     #define CENTO 0x64
     #define DUECENTO 0xC8
     
-    #define GRAVITY_ACC 9.81
-    
 #endif
-
 /* [] END OF FILE */
